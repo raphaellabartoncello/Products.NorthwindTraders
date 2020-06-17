@@ -11,7 +11,9 @@ namespace Products.NorthwindTraders.Controllers
         // GET: Categoria
         public ActionResult Index()
         {
-            return View();
+            var db = new CategoriaDb();
+            var lista = db.CategoriasLista();
+            return View(lista);
         }
     }
 }
