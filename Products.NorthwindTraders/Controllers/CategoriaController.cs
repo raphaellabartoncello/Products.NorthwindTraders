@@ -19,7 +19,7 @@ namespace Products.NorthwindTraders.Controllers
             return View(lista);
         }
 
-        public ActionResult ProdutoPorCategoria(int id)
+        public ActionResult ProdutosPorCategoria(int id)
         {
             var db = new CategoriaDb();
 
