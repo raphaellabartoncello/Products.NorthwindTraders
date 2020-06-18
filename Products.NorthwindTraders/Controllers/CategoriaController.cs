@@ -16,5 +16,15 @@ namespace Products.NorthwindTraders.Controllers
             var lista = db.CategoriasLista();
             return View(lista);
         }
+
+        public ActionResult ProdutoPorCategoria(int id)
+        {
+            var db = new CategoriaDb();
+            var lista = db.ProdutosPorCategoria(id);
+            var categoria = db.CategoriaObter(id);
+            ViewBag.CategoriaNome = categoria.Nome;
+            return View(lista);
+        }
     }
+
 }
