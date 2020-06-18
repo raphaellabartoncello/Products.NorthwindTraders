@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 using Products.NorthwindTraders.Models;
 
 namespace Products.NorthwindTraders.DAL
@@ -19,33 +20,35 @@ namespace Products.NorthwindTraders.DAL
                 return db.Categorias.ToList();
             }
         }
-    }
 
-    //Produtos por Categoria
-    // retorna uma lista de produtos de uma categoria
-    //
-    public List<Produto> ProdutosPorCategoria(int categoriaId)
-    {
-        using (var db = new NorthwindContext())
+        //Produtos por Categoria
+        // retorna uma lista de produtos de uma categoria
+        //
+        public List<Produto> ProdutosPorCategoria(int categoriaId)
         {
-            var query = from c in db.Produtos
-                        where c.CategoriaId == categoriaId
-                        select c;
-            var lista = query.ToList();
+            using (var db = new NorthwindContext())
+            {
+                var query = from c in db.Produtos
+                            where c.CategoriaId == categoriaId
+                            select c;
+                var lista = query.ToList();
 
-            return lista;
+                return lista;
+            }
+
         }
-    }
 
-    // CategoriaObter
-    // retorna uma categoria a partir do Id
-    //
-    public Categoria CategoriaObter(int id)
-    {
-        using (var db = new NorthwindContext())
+        // CategoriaObter
+        // retorna uma categoria a partir do Id
+        //
+        public Categoria CategoriaObter(int id)
         {
-            return db.Categorias
-           .Where(m => m.CategoriaId == id).FirstOrDefault();
+            using (var db = new NorthwindContext())
+            {
+                return db.Categorias
+               .Where(m => m.CategoriaId == id).FirstOrDefault();
+            }
+
         }
     }
 }
